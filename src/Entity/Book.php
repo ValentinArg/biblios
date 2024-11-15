@@ -49,6 +49,10 @@ class Book
     #[ORM\JoinColumn(nullable: false)]
     private ?Editor $editor = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $createdBy = null;
+
     /**
      * @var Collection<int, Author>
      */
@@ -222,6 +226,18 @@ class Book
             }
         }
 
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+    
+    public function setCreatedBy(?User $createdBy): static
+    {
+        $this->createdBy = $createdBy;
+        
         return $this;
     }
 }
