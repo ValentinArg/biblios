@@ -31,8 +31,9 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $cover = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $editedAt = null;
+    #[Assert\NotBlank()]
+    #[ORM\Column]
+    private ?\DateTimeImmutable $editedAt = null;
 
     #[ORM\Column(length: 255)]
     private ?string $plot = null;

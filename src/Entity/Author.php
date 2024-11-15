@@ -25,12 +25,12 @@ class Author
     private ?string $name = null;
 
     #[Assert\NotBlank()]
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $dateOfBirth = null;
+    #[ORM\Column]
+    private ?\DateTimeImmutable $dateOfBirth = null;
 
     #[Assert\GreaterThan(propertyPath: 'dateOfBirth')]
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $dateOfDeath = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $dateOfDeath = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nationality = null;
