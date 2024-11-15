@@ -17,12 +17,17 @@ class Book
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Assert\Isbn(type: 'isbn13')]
+    #[Assert\NotBlank()]
     #[ORM\Column(length: 255)]
     private ?string $isbn = null;
 
+    #[Assert\NotBlank()]
+    #[Assert\Url()]
     #[ORM\Column(length: 255)]
     private ?string $cover = null;
 
@@ -32,6 +37,7 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $plot = null;
 
+    #[Assert\Type(type: 'integer')]
     #[ORM\Column]
     private ?int $pageNumber = null;
 
